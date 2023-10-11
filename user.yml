@@ -10,5 +10,7 @@
     - name: create a user {{ user }}
       user:
         name: "{{ user }}"
+      dsfdsfsd
+      
 
 
