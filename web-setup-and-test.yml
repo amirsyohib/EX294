@@ -1,5 +1,5 @@
 ---
-- name: enable webserver
+- name: enable webserver git
   hosts: node1
   tasks:
     - name: install httpd and firewalld
