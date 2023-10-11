@@ -1,0 +1,21 @@
+---
+- name: undo web test
+  hosts: node1
+  tasks:
+    - name: file index.html is removed
+      file:
+        name: /var/www/html/index.html
+        state: absent
+    - name: delete httpd package
+      dnf:
+        name: httpd
+        state: absent
+- name: test webserver access
+  hosts: localhost
+  become: no
+  tasks:
+    - name: connect to web server
+      uri:
+        url: http://node1.example.com
+        return_content: yes
+        status_code: 200

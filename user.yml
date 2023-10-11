@@ -1,0 +1,14 @@
+---
+- name: create user using a variable
+  hosts: node1
+  vars_files:
+    - users
+  tasks:
+    - name: using debug
+      debug:
+        msg: the username is {{ user }}
+    - name: create a user {{ user }}
+      user:
+        name: "{{ user }}"
+
+

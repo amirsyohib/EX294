@@ -1,0 +1,9 @@
+---
+
+- name: get facts ip
+  hosts: node1
+  tasks:
+    - name: show ip address
+      debug:
+        msg: >
+          This is the IP Address {{ ansible_facts['default_ipv4']['address'] }}

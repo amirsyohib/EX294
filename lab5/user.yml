@@ -1,0 +1,14 @@
+---
+
+- name: create user lab5
+  hosts: node1
+  vars_files:
+    - user
+    - password
+  tasks:
+    - name: create user {{ user }}
+      user:
+        name: "{{ user }}"
+    - name: change {{ user }} password
+      shell:
+        echo {{ password }} | passwd --stdin {{ user }}
