@@ -1,0 +1,15 @@
+---
+- name: show lists also known as array
+  hosts: node1
+  vars_files:
+    - vars/users-dictionary
+  tasks:
+    - name: print array values
+      debug:
+        msg: 
+          - "User is {{ users.linda.username }}"
+          - "Homedirectory is {{ users.linda.homedir }}"
+          - "Shell is {{ users.linda.shell }}"
+    - name: print the second array value
+      debug:
+        var: users
