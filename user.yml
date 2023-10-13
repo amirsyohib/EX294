@@ -4,13 +4,14 @@
   vars_files:
     - users
   tasks:
-    - name: using debug
-      debug:
-        msg: the username is {{ user }}
+    # - name: using debug
+    - debug:
+        msg: 
+         - first username is {{ inventory_hostname }}
+         - second username is {{ inventory_hostname }}
     - name: create a user {{ user }}
       user:
         name: "{{ user }}"
-      dsfdsfsd
       
 
 

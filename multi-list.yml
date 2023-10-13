@@ -1,0 +1,16 @@
+---
+- name: show lists also known as array
+  hosts: node1
+  vars_files:
+    - vars/users-list
+  tasks:
+    - name: print array values
+      debug:
+        msg: 
+          - "User is {{ item.username }}"
+          - "Homedirectory is {{ item.homedir }}"
+          - "Shell is {{ item.shell }}"
+      loop: "{{ users }}"
+    - name: print the second array value
+      debug:
+        msg: the second item is {{ users[1] }}
