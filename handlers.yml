@@ -1,7 +1,7 @@
 ---
 - name: set up web server
-  hosts: all
-  force_handlers: true
+  hosts: node1
+    #force_handlers: true
   tasks:
     - name: install httpd
       yum: 
@@ -13,6 +13,7 @@
         dest: /var/www/html/index.html
       notify:
         - restart_web
+    - meta: flush_handlers
     - name: copy nothing - intended to fail
       copy: 
         src: /tmp/nothing
