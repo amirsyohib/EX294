@@ -1,0 +1,14 @@
+---
+- name: user register
+  hosts: node1
+  vars:
+    username: anna
+  tasks:
+  - name: add user
+    user:
+      name: "{{ username }}"
+    register: user
+  - name: test result
+    debug:
+      var: user
+

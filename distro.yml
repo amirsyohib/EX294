@@ -1,16 +1,21 @@
 ---
 - name: when demo
-  hosts: all
+  hosts: node1
   vars:
     supported_distros:
       - Ubuntu
       - CentOS
       - Fedora
+      - RedHat
+    mypackage: nmap
+    register: package_result
   tasks:
     - name: install RH family specific packages
       yum:
         name: "{{ mypackage }}"
         state: present
-      when: ansible_distribution in supported_distros 
-
+      when: ansible_distribution in supported_distros
+    - name: debug
+      debug:
+        var: package_result
 

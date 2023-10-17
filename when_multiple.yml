@@ -1,0 +1,14 @@
+---
+- name: using multiple conditions
+  hosts: node1
+  tasks:
+  - package:
+      name: httpd
+      state: latest
+    when: 
+      - ansible_distribution == "RedHat"
+      - ansible_memfree_mb < 12
+    register: the_package
+  - name: show package result
+    debug:
+      var: the_package
