@@ -1,0 +1,12 @@
+---
+- name : checking for disk
+  hosts: node1
+  tasks:
+  - name: print messages
+    debug:
+      msg: you have second disk
+    when: ansible_facts['devices']['sdc'] is defined
+  - name: print no second disk
+    debug:
+      msg: you have no second disk on this system
+    when: ansible_facts['devices']['sdc'] is not defined

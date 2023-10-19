@@ -1,0 +1,17 @@
+---
+- name: create a file
+  hosts: node1
+  tasks:
+    - name: touch filename readme.txt
+      ansible.builtin.file:
+        path: /tmp/readme.txt
+        owner: ansible
+        mode: 0640
+        state: touch
+        setype: public_content_rw_t
+      register: content_task
+    - name: debug
+      debug:
+        var: content_task
+
+
