@@ -1,0 +1,3 @@
+# from Ansible galaxy
+- src: geerlingguy.docker
+- src: geerlingguy.nginx

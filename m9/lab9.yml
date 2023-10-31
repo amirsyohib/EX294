@@ -1,0 +1,9 @@
+---
+- name: Install issue
+  hosts: node1
+  roles:
+    - issue
+  register: result
+    - name: debug
+      debug:
+        msg: result
