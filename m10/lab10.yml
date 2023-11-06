@@ -1,0 +1,13 @@
+---
+- name: check nic
+  hosts: node1
+  tasks:
+  - name: check ens34
+    assert:
+      that:
+        - ansible_facts['enp0s3'] is defined
+      fail_msg: bad luck dude
+      success_msg: it exists dude
+        #- name: print text is assert did not fail
+        #debug:
+        #msg: ens33 exists
