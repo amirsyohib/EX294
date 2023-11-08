@@ -1,0 +1,11 @@
+---
+- name: create user with encrypted pass
+  hosts: ansible2
+  vars:
+    password: "$6$mysecretsalt$qJbapG68nyRab3gxvKWPUcs2g3t0oMHSHMnSKecYNpSi3CuZm.GbBqXO8BE6EI6P1JUefhA0qvD7b5LSh./PU1"
+  tasks:
+  - name: create the user
+    user: 
+      name: anna
+      password: "{{ password }}"
+

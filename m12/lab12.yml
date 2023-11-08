@@ -1,0 +1,19 @@
+---
+- name: lab 12
+  hosts: node1
+  vars:
+    users:
+    - syed
+    - syarifah
+  vars_prompt:
+    name: password
+    prompt: enter a password
+  tasks:
+    - name: create the users
+      user:
+        name: "{{ item }}"
+      loop: "{{ users }}"
+    - name: set the password
+      shell: echo {{ password }} | passwd --stdin {{ item }}
+      loop: "{{ users }}"
+
